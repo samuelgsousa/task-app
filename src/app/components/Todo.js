@@ -1,6 +1,6 @@
 "use client"; 
-import React, { useState } from 'react';
-import './Todo.scss'; // Verifique se o caminho está correto
+import React, { useState, useEffect } from 'react';
+import './Todo.scss';
 
 const Todo = () => {
   const [tasks, setTasks] = useState([]);
@@ -8,10 +8,28 @@ const Todo = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [confirmDeletePopup, setConfirmDeletePopup] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
+  const baseurl = 'https://task-app-v262.onrender.com/tasks'
+   //const baseurl = 'http://localhost:5000/tasks'
+  // Função para buscar tarefas do backend
+  const fetchTasks = async () => {
+    const response = await fetch(baseurl);
+    const data = await response.json();
+    setTasks(data);
+  };
 
-  const addTask = () => {
+  useEffect(() => {
+    fetchTasks(); // Busca tarefas ao montar o componente
+  }, []);
+
+  const addTask = async () => {
     if (newTask.trim()) {
-      setTasks([...tasks, { id: Date.now(), text: newTask, completed: false }]);
+      const response = await fetch(baseurl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: newTask, completed: false }),
+      });
+      const addedTask = await response.json();
+      setTasks([...tasks, addedTask]);
       setNewTask('');
       setIsPopupOpen(false); 
     }
@@ -22,21 +40,29 @@ const Todo = () => {
     setConfirmDeletePopup(true);
   };
 
-  const deleteTask = () => {
+  const deleteTask = async () => {
+    await fetch(`${baseurl}/${taskToDelete}`, {
+      method: 'DELETE',
+    });
     setTasks(tasks.filter(task => task.id !== taskToDelete));
     setConfirmDeletePopup(false);
     setTaskToDelete(null);
   };
 
-  const toggleCompleted = (id) => {
+  const toggleCompleted = async (id) => {
+    const taskToUpdate = tasks.find(task => task.id === id);
+    const updatedTask = { ...taskToUpdate, completed: !taskToUpdate.completed };
+
+    await fetch(`${baseurl}/${id}`, {
+      method: 'PUT', // Certifique-se de ter uma rota PUT no backend para atualizar a tarefa
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedTask),
+    });
+
     setTasks(tasks.map(task => 
-      task.id === id ? { ...task, completed: !task.completed } : task
+      task.id === id ? updatedTask : task
     ));
   };
-
-  // Separar tarefas pendentes e finalizadas
-  const pendingTasks = tasks.filter(task => !task.completed);
-  const completedTasks = tasks.filter(task => task.completed);
 
   return (
     <div className="allContent">
@@ -74,12 +100,10 @@ const Todo = () => {
       <div className={`todo-container ${isPopupOpen || confirmDeletePopup ? 'blur' : ''}`}>
         <ul className="taskList">
           <h1>Suas tarefas de Hoje</h1>
-          
-          {/* Exibir mensagem se não houver tarefas pendentes */}
-          {pendingTasks.length === 0 ? (
-            <p>Você não possui tarefas pendentes</p>
+          {tasks.filter(task => !task.completed).length === 0 ? (
+            <p>Você não possui tarefas pendentes.</p>
           ) : (
-            pendingTasks.map(task => (
+            tasks.map(task => (
               <li key={task.id}>
                 <div className="item">
                   <input
@@ -97,12 +121,13 @@ const Todo = () => {
               </li>
             ))
           )}
+        </ul>
 
-          {/* Exibir cabeçalho e tarefas finalizadas, se houver */}
-          {completedTasks.length > 0 && (
-            <>
-              <h1>Tarefas finalizadas</h1>
-              {completedTasks.map(task => (
+        {tasks.some(task => task.completed) && (
+          <>
+            <h1>Tarefas finalizadas</h1>
+            <ul className="taskList">
+              {tasks.filter(task => task.completed).map(task => (
                 <li key={task.id}>
                   <div className="item">
                     <input
@@ -110,7 +135,7 @@ const Todo = () => {
                       checked={task.completed}
                       onChange={() => toggleCompleted(task.id)}
                     />
-                    <span style={{ textDecoration: 'line-through' }}>
+                    <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
                       {task.text}
                     </span>
                   </div>
@@ -119,9 +144,10 @@ const Todo = () => {
                   </button>
                 </li>
               ))}
-            </>
-          )}
-        </ul>
+            </ul>
+          </>
+        )}
+
         <button onClick={() => setIsPopupOpen(true)}>Adicionar Tarefa</button>
       </div>
     </div>

@@ -4,7 +4,8 @@ import Todo from "./components/Todo";
 
 export default function Home() {
   return (
-    <div className="App">    <header>
+    <div className="App">    
+    <header>
 
     </header>
 
