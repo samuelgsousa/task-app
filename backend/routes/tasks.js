@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 });
 
 // Rota para deletar uma tarefa
-app.delete('/', async (req, res) => {
+app.delete('/:id', async (req, res) => {
   const { id } = req.params;
   console.log('parametros em taks: ' + `ObjectId('${id}')`)
   try {
