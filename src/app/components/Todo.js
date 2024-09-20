@@ -8,8 +8,8 @@ const Todo = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [confirmDeletePopup, setConfirmDeletePopup] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
-  //const baseurl = 'https://task-app-v262.onrender.com/tasks'
-   const baseurl = 'http://localhost:5000/tasks'
+  const baseurl = 'https://task-app-v262.onrender.com/tasks'
+   //const baseurl = 'http://localhost:5000/tasks'
 
   // Função para buscar tarefas do backend
   const fetchTasks = async () => {
