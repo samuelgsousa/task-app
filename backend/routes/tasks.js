@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 });
 
 // Rota para deletar uma tarefa
-app.delete('/tasks/:id', async (req, res) => {
+app.delete('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const task = await Task.findByIdAndDelete(id);

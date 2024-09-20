@@ -47,13 +47,13 @@ const Todo = () => {
     await fetch(`${baseurl}/${taskToDelete}`, {
       method: 'DELETE',
     });
-    setTasks(tasks.filter(task => task._id !== taskToDelete));
+    setTasks(tasks.filter(task => task.id !== taskToDelete));
     setConfirmDeletePopup(false);
     setTaskToDelete(null);
   };
 
   const toggleCompleted = async (id) => {
-    const taskToUpdate = tasks.find(task => task._id === id);
+    const taskToUpdate = tasks.find(task => task.id === id);
     const updatedTask = { ...taskToUpdate, completed: !taskToUpdate.completed };
 
     await fetch(`${baseurl}/${id}`, {
@@ -63,7 +63,7 @@ const Todo = () => {
     });
 
     setTasks(tasks.map(task => 
-      task._id === id ? updatedTask : task
+      task.id === id ? updatedTask : task
     ));
   };
 
@@ -107,18 +107,18 @@ const Todo = () => {
             <p>Você não possui tarefas pendentes.</p>
           ) : (
             tasks.map(task => (
-              <li key={task._id}>
+              <li key={task.id}>
                 <div className="item">
                   <input
                     type="checkbox"
                     checked={task.completed}
-                    onChange={() => toggleCompleted(task._id)}
+                    onChange={() => toggleCompleted(task.id)}
                   />
                   <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
                     {task.text}
                   </span>
                 </div>
-                <button onClick={() => confirmDeleteTask(task._id)} className="excludeButton">
+                <button onClick={() => confirmDeleteTask(task.id)} className="excludeButton">
                   <img src="/delete-icon.svg" alt="Excluir tarefa" className="trashIcon"/>
                 </button>
               </li>
@@ -131,18 +131,18 @@ const Todo = () => {
             <h1>Tarefas finalizadas</h1>
             <ul className="taskList">
               {tasks.filter(task => task.completed).map(task => (
-                <li key={task._id}>
+                <li key={task.id}>
                   <div className="item">
                     <input
                       type="checkbox"
                       checked={task.completed}
-                      onChange={() => toggleCompleted(task._id)}
+                      onChange={() => toggleCompleted(task.id)}
                     />
                     <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
                       {task.text}
                     </span>
                   </div>
-                  <button onClick={() => confirmDeleteTask(task._id)} className="excludeButton">
+                  <button onClick={() => confirmDeleteTask(task.id)} className="excludeButton">
                     <img src="/delete-icon.svg" alt="Excluir tarefa" className="trashIcon"/>
                   </button>
                 </li>
