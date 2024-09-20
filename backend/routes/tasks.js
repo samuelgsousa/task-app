@@ -19,9 +19,11 @@ router.get('/', async (req, res) => {
 // Rota para deletar uma tarefa
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
-  console.log('O id é: ' + id)
+
+  console.log('O id recebido em tasks.js é: ' + id)
+
   try {
-    const task = await Task.findByIdAndDelete(id);
+    const task = await Task.findOneAndDelete({ _id: id });
     if (!task) {
       return res.status(404).json({ message: 'Tarefa não encontrada' });
     }
