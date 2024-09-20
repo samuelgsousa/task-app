@@ -1,8 +1,8 @@
 
 
-$mainColor: rgba(110, 110, 110, 0.89);
-$buttonColor: rgb(101, 152, 248);
-$deleteButton: rgb(187, 12, 12);
+$mainColor: #EAECF0;
+$buttonColor: #0796D3;
+$deleteButton: #D30707;
 
 @function lighten($color, $amount) {
     @return mix(white, $color, $amount);
@@ -20,7 +20,7 @@ h1{
 .taskList{
     width: 60%;
     margin: auto;
-    min-height: 40vh;
+
     border-radius: 15px;
     border-style: solid;
     border-width: 1.7px;
@@ -29,8 +29,18 @@ h1{
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    list-style: none; /* Remove as bolinhas ou números das listas */
-    padding: 0; /* Remove o preenchimento padrão da lista */
+    list-style: none; 
+    padding: 0; 
+    width: Fixed (272px)px;
+    height: Hug (428px)px;
+    top: 162px;
+    left: 24px;
+    padding: 32px 0px 0px 0px;
+    gap: 24px;
+    border-radius: 16px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+
 
 }
 
@@ -38,17 +48,38 @@ h1{
     cursor: pointer;
     border-style: dashed;
     border-width: 1.7px;
-    border-color: var(--mainColor);
+    border-color: $mainColor;
     border-radius: 10px;
     width: 85%;
-    height: 5vh;
+    height: 8vh;
     margin: 0; /* Remove a margem padrão da lista, se necessário */
     display: flex;
-    align-items: center;
+
     padding-left: 20px;
     padding-right: 20px;
     justify-content: space-between;
+    width: Fill (208px)px;
+
+    width: Fill (208px)px;
+    padding: 0px 15px 0px 15px;
+    gap: 16px;
+    border-radius: 8px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    
+
+    font-family: Inter Tight;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+    letter-spacing: -0.02em;
+    text-align: left;
+
+    align-items: center;
+
+
 }
+
 
 .taskList li:hover{
     background-color: rgb(218, 238, 250);
@@ -70,10 +101,11 @@ button{
     color: white;
     font-weight: 300;
     background: linear-gradient(to right, $buttonColor, lighten($buttonColor, 40%));
+    
   }
 
   .cancelButton{
-    background: lighten($buttonColor, 40%);
+    background: #E7EEFB;
     color: black;
   }
 
@@ -140,7 +172,42 @@ button{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    width: Fixed (272px)px;
+    height: Hug (118px)px;
+    top: 195px;
+    left: 24px;
+    gap: 16px;
+    opacity: 0px;
+
   }
+
+  
+
+@media(max-width: 700px){
+  .taskList li{
+    width: 65%;
+  }
+
+
+  .buttonsContainer{
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .buttonsContainer button{
+    width: 100%;
+    height: 8vh;
+  }
+
+
+}
+
+@media(max-width: 430px){
+  .popup.active{
+    width: 100vw;
+    height: 100vh;
+  }
+
+}
 
   .nTaskInput{
     @extend li;

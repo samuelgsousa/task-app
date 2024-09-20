@@ -124,12 +124,9 @@ const Todo = () => {
               </li>
             ))
           )}
-        </ul>
-
-        {tasks.some(task => task.completed) && (
+                  {tasks.some(task => task.completed) && (
           <>
             <h1>Tarefas finalizadas</h1>
-            <ul className="taskList">
               {tasks.filter(task => task.completed).map(task => (
                 <li key={task._id}>
                   <div className="item">
@@ -147,9 +144,11 @@ const Todo = () => {
                   </button>
                 </li>
               ))}
-            </ul>
           </>
         )}
+        </ul>
+
+
 
         <button onClick={() => setIsPopupOpen(true)}>Adicionar Tarefa</button>
       </div>
