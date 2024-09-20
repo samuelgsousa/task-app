@@ -8,32 +8,22 @@ const Todo = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [confirmDeletePopup, setConfirmDeletePopup] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
-
-  
-  
+  const baseurl = 'https://task-app-v262.onrender.com/tasks'
+   //const baseurl = 'http://localhost:5000/tasks'
   // Função para buscar tarefas do backend
   const fetchTasks = async () => {
-    try {
-      const response = await fetch('https://task-app-v262.onrender.com/tasks');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      setTasks(data);
-    } catch (error) {
-      console.error('Error fetching tasks:', error);
-      // Você pode também definir um estado para mostrar uma mensagem de erro se necessário
-    }
+    const response = await fetch(baseurl);
+    const data = await response.json();
+    setTasks(data);
   };
-  
+
   useEffect(() => {
-    fetchTasks();
+    fetchTasks(); // Busca tarefas ao montar o componente
   }, []);
-  
 
   const addTask = async () => {
     if (newTask.trim()) {
-      const response = await fetch('http://localhost:5000/tasks', {
+      const response = await fetch(baseurl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: newTask, completed: false }),
@@ -51,7 +41,7 @@ const Todo = () => {
   };
 
   const deleteTask = async () => {
-    await fetch(`http://localhost:5000/tasks/${taskToDelete}`, {
+    await fetch(`${baseurl}/${taskToDelete}`, {
       method: 'DELETE',
     });
     setTasks(tasks.filter(task => task.id !== taskToDelete));
@@ -63,7 +53,7 @@ const Todo = () => {
     const taskToUpdate = tasks.find(task => task.id === id);
     const updatedTask = { ...taskToUpdate, completed: !taskToUpdate.completed };
 
-    await fetch(`http://localhost:5000/tasks/${id}`, {
+    await fetch(`${baseurl}/${id}`, {
       method: 'PUT', // Certifique-se de ter uma rota PUT no backend para atualizar a tarefa
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedTask),
