@@ -1,0 +1,152 @@
+
+
+$mainColor: rgba(110, 110, 110, 0.89);
+$buttonColor: rgb(101, 152, 248);
+$deleteButton: rgb(187, 12, 12);
+
+@function lighten($color, $amount) {
+    @return mix(white, $color, $amount);
+  }
+
+.allContent{
+text-align: center;
+}
+
+h1{
+    color: $mainColor;
+    font-size: 1.2rem;
+}
+
+.taskList{
+    width: 60%;
+    margin: auto;
+    min-height: 40vh;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1.7px;
+    border-color: $mainColor;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    list-style: none; /* Remove as bolinhas ou números das listas */
+    padding: 0; /* Remove o preenchimento padrão da lista */
+
+}
+
+.taskList li{
+    cursor: pointer;
+    border-style: dashed;
+    border-width: 1.7px;
+    border-color: var(--mainColor);
+    border-radius: 10px;
+    width: 85%;
+    height: 5vh;
+    margin: 0; /* Remove a margem padrão da lista, se necessário */
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+}
+
+.taskList li:hover{
+    background-color: rgb(218, 238, 250);
+    border-color: transparent;
+}
+
+input[type="checkbox"]{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+button{
+    height: 2.8rem;
+    width: 10rem;
+    border-radius: 10px;
+    border-style: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 300;
+    background: linear-gradient(to right, $buttonColor, lighten($buttonColor, 40%));
+  }
+
+  .cancelButton{
+    background: lighten($buttonColor, 40%);
+    color: black;
+  }
+
+  .deleteButton{
+    background: linear-gradient(to right, $deleteButton, lighten($deleteButton, 20%));;
+  }
+
+
+.excludeButton{
+    justify-self: end;
+    background-color: transparent;
+    background: none;
+    border-style: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.trashIcon{
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.blur {
+    filter: blur(4px); 
+  }
+
+.popup{
+    @extend .taskList;
+    position: absolute;
+    background-color: white;
+    min-height: 25vh;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 3%;
+    padding-top: 1%;
+    box-sizing: border-box;
+   
+}
+
+.popup.active {
+    top: 50%;
+    transition: top 10s ease, opacity 10s ease;
+    opacity: 1; 
+  }
+
+  .buttonsContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nTaskInput{
+    @extend li;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    border-style: solid !important;
+  }
+
+  
