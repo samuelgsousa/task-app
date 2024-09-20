@@ -16,6 +16,21 @@ router.get('/', async (req, res) => {
   res.send(tasks);
 });
 
+// Rota para deletar uma tarefa
+app.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const task = await Task.findByIdAndDelete(id);
+    if (!task) {
+      return res.status(404).json({ message: 'Tarefa não encontrada' });
+    }
+    res.json({ message: 'Tarefa deletada com sucesso' });
+  } catch (err) {
+    res.status(500).json({ message: 'Erro ao deletar a tarefa' });
+  }
+});
+
+
 // Outras rotas (atualizar, deletar) podem ser adicionadas aqui...
 
 module.exports = router;

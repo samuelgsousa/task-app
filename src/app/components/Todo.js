@@ -37,11 +37,13 @@ const Todo = () => {
   };
 
   const confirmDeleteTask = (id) => {
+  
     setTaskToDelete(id);
     setConfirmDeletePopup(true);
   };
 
   const deleteTask = async () => {
+    console.log("id da task a ser deletada: " + taskToDelete)
     await fetch(`${baseurl}/${taskToDelete}`, {
       method: 'DELETE',
     });
