@@ -37,7 +37,6 @@ const Todo = () => {
   };
 
   const confirmDeleteTask = (id) => {
-  
     setTaskToDelete(id);
     setConfirmDeletePopup(true);
   };
@@ -118,7 +117,7 @@ const Todo = () => {
                     {task.text}
                   </span>
                 </div>
-                <button onClick={() => confirmDeleteTask(task.id)} className="excludeButton">
+                <button onClick={() => confirmDeleteTask(task._id)} className="excludeButton">
                   <img src="/delete-icon.svg" alt="Excluir tarefa" className="trashIcon"/>
                 </button>
               </li>
