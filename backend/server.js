@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const url = "mongodb+srv://samuel:S9isVL5cZgOKaErl@cluster0.ppobr.mongodb.net/tasklist"
+const url = "mongodb+srv://samuel:S9isVL5cZgOKaErl@cluster0.ppobr.mongodb.net/tasks"
 app.use(cors());
 app.use(express.json());
 
