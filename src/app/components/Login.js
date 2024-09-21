@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -17,6 +18,7 @@ export default function Login() {
     });
 
     if (res.status === 200) {
+      console.log("era pra ter ido")
       router.push('/tasks'); // Redireciona para o componente de tarefas
     } else {
       setError('Credenciais inválidas');
