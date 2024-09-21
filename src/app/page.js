@@ -6,10 +6,6 @@ import Login from "./components/Login";
 export default function Home() {
 
   return (
-    <>
-    <h1>Renderizou 3</h1>
     <Login></Login>
-    </>
-
   );
 }

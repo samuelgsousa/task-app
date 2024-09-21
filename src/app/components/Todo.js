@@ -154,7 +154,7 @@ const Todo = () => {
       {tasks
         .filter(task => task.completed) // Filtra tarefas completadas
         .map(task => (
-          <li key={task._id} class="checkedTasks">
+          <li key={task._id} className="checkedTasks">
             <div className="item">
               <label className="custom-checkbox">
                 <input
@@ -179,7 +179,7 @@ const Todo = () => {
 
 </ul>
 
-        <button onClick={() => setIsPopupOpen(true)} class="addTaskBtn">Adicionar Tarefa</button>
+        <button onClick={() => setIsPopupOpen(true)} className="addTaskBtn">Adicionar Tarefa</button>
       </div>
     </div>
   );

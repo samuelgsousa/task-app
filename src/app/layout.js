@@ -36,12 +36,12 @@ export default function RootLayout({ children, isPopupOpen, confirmDeletePopup }
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <header className={blurClass}>
 
-        <div class="logoContainer">
-          <img src="/Logomark.png" alt="logo" class="logo"/>
+        <div className="logoContainer">
+          <img src="/Logomark.png" alt="logo" className="logo"/>
           <h1>FocalPoint</h1>
         </div>
 
-        <h2 class="wellcomeMessage">Bem vindo de volta, Marcus</h2>
+        <h2 className="wellcomeMessage">Bem vindo de volta, Marcus</h2>
 
         <div>
           <span>{date}</span>
