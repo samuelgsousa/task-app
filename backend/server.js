@@ -34,6 +34,26 @@ app.post('/tasks', async (req, res) => {
   res.json(task);
 });
 
+// Rota para deletar uma tarefa pelo _id
+app.delete('/tasks/:id', async (req, res) => {
+  const { id } = req.params; // Obtém o _id dos parâmetros da URL
+
+  try {
+    // Deleta a tarefa pelo _id
+    const deletedTask = await Task.findByIdAndDelete(id);
+
+    if (!deletedTask) {
+      return res.status(404).json({ message: 'Tarefa não encontrada' });
+    }
+
+    res.json({ message: 'Tarefa deletada com sucesso', task: deletedTask });
+  } catch (error) {
+    console.error('Erro ao deletar tarefa:', error);
+    res.status(500).json({ message: 'Erro ao deletar a tarefa' });
+  }
+});
+
+
 // Iniciar o servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);

@@ -131,12 +131,11 @@ const Todo = () => {
         </li>
       ))
   )}
-</ul>
 
 {tasks.some(task => task.completed) && (
   <>
     <h1>Tarefas finalizadas</h1>
-    <ul className="taskList">
+
       {tasks
         .filter(task => task.completed) // Filtra tarefas completadas
         .map(task => (
@@ -159,9 +158,13 @@ const Todo = () => {
             </button>
           </li>
         ))}
-    </ul>
+
   </>
 )}
+
+</ul>
+
+
 
 
 
