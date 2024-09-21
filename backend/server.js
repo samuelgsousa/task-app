@@ -21,6 +21,11 @@ const TaskSchema = new mongoose.Schema({
 
 const Task = mongoose.model('Task', TaskSchema);
 
+const userCredentials = {
+  username: 'Marcus',
+  password: 'admin123'
+};
+
 // Rota para obter tarefas
 app.get('/tasks', async (req, res) => {
   const tasks = await Task.find();
@@ -53,10 +58,29 @@ app.delete('/tasks/:id', async (req, res) => {
   }
 });
 
-const userCredentials = {
-  username: 'admin',
-  password: '123456'
-};
+// Rota para atualizar uma tarefa (alterar o status de 'completed')
+app.put('/tasks/:id', async (req, res) => {
+  const { id } = req.params; // Obtém o _id da tarefa a partir dos parâmetros da URL
+  const { completed } = req.body; // Obtém o campo 'completed' do corpo da requisição
+
+  try {
+    // Encontra a tarefa pelo _id e atualiza o campo 'completed'
+    const updatedTask = await Task.findByIdAndUpdate(
+      id,
+      { completed }, // Atualiza o campo 'completed'
+      { new: true } // Retorna a tarefa atualizada
+    );
+
+    if (!updatedTask) {
+      return res.status(404).json({ message: 'Tarefa não encontrada' });
+    }
+
+    res.json({ message: 'Tarefa atualizada com sucesso', task: updatedTask });
+  } catch (error) {
+    console.error('Erro ao atualizar tarefa:', error);
+    res.status(500).json({ message: 'Erro ao atualizar a tarefa' });
+  }
+});
 
 // Rota de login
 app.post('/login', (req, res) => {

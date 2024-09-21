@@ -263,7 +263,7 @@ button{
 
 
 .wellcomeMessage{
-  visibility: visible;
+  display: inherit;
 
 }
 
@@ -272,7 +272,7 @@ button{
 }
 
 
-@media(max-width: 500px){
+@media(max-width: 540px){
   .popup.active{
     position: sticky;
     width: 105%;
@@ -289,8 +289,16 @@ button{
     height: 8vh;
   }
 
+  .taskList{
+    width: 80%;
+  }
+
   .taskList li{
     width: 80%;
   }
+
+  .addTaskBtn{
+    width: 80%;
+ }
 
 }

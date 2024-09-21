@@ -81,7 +81,7 @@ const Todo = () => {
             type="text" 
             value={newTask} 
             onChange={(e) => setNewTask(e.target.value)} 
-            placeholder="Digite a tarefa" 
+            placeholder="Digite" 
             className="nTaskInput"
           />
           <div className="buttonsContainer">
