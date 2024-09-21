@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Login from "./components/Login";
-import './globals.css';
 
 export default function Home() {
 
