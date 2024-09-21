@@ -1,6 +1,8 @@
 "use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import './Todo.scss';
+import './Login.scss'
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -18,7 +20,6 @@ export default function Login() {
     });
 
     if (res.status === 200) {
-      console.log("era pra ter ido")
       router.push('/tasks'); // Redireciona para o componente de tarefas
     } else {
       setError('Credenciais inválidas');
@@ -26,7 +27,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div class="insertData">
       <h1>Login</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleLogin}>

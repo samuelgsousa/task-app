@@ -22,6 +22,8 @@ const Todo = () => {
     fetchTasks(); // Busca tarefas ao montar o componente
   }, []);
 
+  
+
   const addTask = async () => {
     if (newTask.trim()) {
       const response = await fetch(baseurl, {
@@ -69,6 +71,7 @@ const Todo = () => {
 
   return (
     <div className="allContent">
+      
       {/* Pop-up nova tarefa */}
       {isPopupOpen && (
         <div className={`popup ${isPopupOpen ? 'active' : ''}`}>
@@ -105,7 +108,7 @@ const Todo = () => {
       <ul className="taskList">
   <h1>Suas tarefas de Hoje</h1>
   {tasks.filter(task => !task.completed).length === 0 ? (
-    <p>Você não possui tarefas pendentes.</p>
+    <p>Uffa! Você não possui tarefas pendentes :)</p>
   ) : (
     // Renderiza apenas tarefas não completadas
     tasks
@@ -139,7 +142,7 @@ const Todo = () => {
       {tasks
         .filter(task => task.completed) // Filtra tarefas completadas
         .map(task => (
-          <li key={task._id}>
+          <li key={task._id} class="checkedTasks">
             <div className="item">
               <label className="custom-checkbox">
                 <input
@@ -164,12 +167,7 @@ const Todo = () => {
 
 </ul>
 
-
-
-
-
-
-        <button onClick={() => setIsPopupOpen(true)}>Adicionar Tarefa</button>
+        <button onClick={() => setIsPopupOpen(true)} class="addTaskBtn">Adicionar Tarefa</button>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 
 
 $mainColor: #EAECF0;
+$commonFontColor: #0000008A;
 $buttonColor: #0796D3;
-$deleteButton: #D30707;
 
 @function lighten($color, $amount) {
     @return mix(white, $color, $amount);
@@ -13,8 +13,9 @@ text-align: center;
 }
 
 h1{
-    color: $mainColor;
-    font-size: 1.2rem;
+    color: $commonFontColor;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .taskList{
@@ -50,7 +51,7 @@ h1{
     border-color: #D7DDE9;
     border-radius: 10px;
     width: 85%;
-    height: 8vh;
+    height: 6vh;
     margin: 0; 
     display: flex;
 
@@ -100,6 +101,7 @@ button{
     color: white;
     font-weight: 300;
     background: linear-gradient(to right, $buttonColor, lighten($buttonColor, 40%));
+    font-size: 16px;
     
   }
 
@@ -109,7 +111,8 @@ button{
   }
 
   .deleteButton{
-    background: linear-gradient(to right, $deleteButton, lighten($deleteButton, 20%));;
+    background: linear-gradient(90deg, #D30707 0%, #F05353 68.65%);
+
   }
 
 
@@ -193,19 +196,12 @@ button{
   }
   .buttonsContainer button{
     width: 100%;
-    height: 8vh;
+    height: 6vh;
   }
 
 
 }
 
-@media(max-width: 430px){
-  .popup.active{
-    width: 100vw;
-    height: 100vh;
-  }
-
-}
 
   .nTaskInput{
     @extend li;
@@ -236,9 +232,13 @@ button{
   cursor: pointer;
 }
 
+.checkedTasks{
+  color: $commonFontColor;
+}
+
 /* Estilo do checkbox quando marcado */
 .custom-checkbox input:checked + .checkmark {
-  background-color: #A0DCF6; /* Cor de fundo quando marcado */
+  background-color: #A0DCF6; 
   border-color: #0796D3;
 }
 
@@ -258,4 +258,39 @@ button{
 
 .custom-checkbox input:checked + .checkmark:after {
   display: block;
+}
+
+
+
+.wellcomeMessage{
+  visibility: visible;
+
+}
+
+.addTaskBtn{
+   width: 60%;
+}
+
+
+@media(max-width: 500px){
+  .popup.active{
+    position: sticky;
+    width: 105%;
+    padding: 5%;
+    height: 100vh;
+    margin: 0px;
+    translate: none;
+    border-radius: 0%;
+    margin: 0px;
+    transform: translate(-3%, -50%);
+  }
+
+  .buttonsContainer button{
+    height: 8vh;
+  }
+
+  .taskList li{
+    width: 80%;
+  }
+
 }
