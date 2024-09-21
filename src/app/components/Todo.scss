@@ -30,17 +30,16 @@ h1{
     align-items: center;
     gap: 1rem;
     list-style: none; 
-    padding: 0; 
     width: Fixed (272px)px;
     height: Hug (428px)px;
     top: 162px;
     left: 24px;
-    padding: 32px 0px 0px 0px;
+    padding: 32px 0px 32px 0px;
     gap: 24px;
     border-radius: 16px;
     border: 1px 0px 0px 0px;
     opacity: 0px;
-
+    margin-bottom: 15px;
 
 }
 
@@ -48,7 +47,7 @@ h1{
     cursor: pointer;
     border-style: dashed;
     border-width: 1.7px;
-    border-color: $mainColor;
+    border-color: #D7DDE9;
     border-radius: 10px;
     width: 85%;
     height: 8vh;
