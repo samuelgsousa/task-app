@@ -64,11 +64,10 @@ app.put('/tasks/:id', async (req, res) => {
   const { completed } = req.body; // Obtém o campo 'completed' do corpo da requisição
 
   try {
-    // Encontra a tarefa pelo _id e atualiza o campo 'completed'
     const updatedTask = await Task.findByIdAndUpdate(
       id,
-      { completed }, // Atualiza o campo 'completed'
-      { new: true } // Retorna a tarefa atualizada
+      { completed }, 
+      { new: true } 
     );
 
     if (!updatedTask) {

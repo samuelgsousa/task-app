@@ -19,7 +19,6 @@ const Todo = () => {
     const isAuthenticated = localStorage.getItem('authToken');
 
     if (!isAuthenticated) {
-      // Se não estiver autenticado, redireciona para a página de login
       window.alert('Você precisa realizar o login para acessar sua lista de tarefas')
       router.push('/');
     }
@@ -59,7 +58,6 @@ const Todo = () => {
   };
 
   const deleteTask = async () => {
-    console.log("id da task a ser deletada: " + taskToDelete)
     await fetch(`${baseurl}/${taskToDelete}`, {
       method: 'DELETE',
     });

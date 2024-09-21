@@ -1,4 +1,3 @@
-// routes/tasks.js
 const express = require('express');
 const router = express.Router();
 const Task = require('../models/Task');
@@ -19,9 +18,6 @@ router.get('/', async (req, res) => {
 // Rota para deletar uma tarefa
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
-
-  console.log('O id recebido em tasks.js é: ' + id)
-
   try {
     const task = await Task.findOneAndDelete({ _id: id });
     if (!task) {
@@ -32,8 +28,5 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ message: 'Erro ao deletar a tarefa' });
   }
 });
-
-
-// Outras rotas (atualizar, deletar) podem ser adicionadas aqui...
 
 module.exports = router;
