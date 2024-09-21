@@ -45,7 +45,7 @@ h1{
 
 .taskList li{
     cursor: pointer;
-    border-style: dashed;
+    border-style: dashed !important;
     border-width: 1.7px;
     border-color: #D7DDE9;
     border-radius: 10px;
