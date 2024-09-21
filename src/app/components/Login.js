@@ -20,6 +20,7 @@ export default function Login() {
     });
 
     if (res.status === 200) {
+      localStorage.setItem('authToken', 'loggedIn');
       router.push('/tasks'); // Redireciona para o componente de tarefas
     } else {
       setError('Credenciais inválidas');

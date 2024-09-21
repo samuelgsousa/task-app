@@ -1,5 +1,6 @@
 "use client"; 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import './Todo.scss';
 
 const Todo = () => {
@@ -10,6 +11,19 @@ const Todo = () => {
   const [taskToDelete, setTaskToDelete] = useState(null);
   const baseurl = 'https://task-app-v262.onrender.com/tasks'
    //const baseurl = 'http://localhost:5000/tasks'
+
+   const router = useRouter();
+
+   useEffect(() => {
+    // Verificar se existe o token de autenticação
+    const isAuthenticated = localStorage.getItem('authToken');
+
+    if (!isAuthenticated) {
+      // Se não estiver autenticado, redireciona para a página de login
+      window.alert('Você precisa realizar o login para acessar sua lista de tarefas')
+      router.push('/');
+    }
+  }, [router]);
 
   // Função para buscar tarefas do backend
   const fetchTasks = async () => {
