@@ -53,8 +53,22 @@ app.delete('/tasks/:id', async (req, res) => {
   }
 });
 
+const userCredentials = {
+  username: 'admin',
+  password: '123456'
+};
 
-// Iniciar o servidor
+// Rota de login
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  if (username === userCredentials.username && password === userCredentials.password) {
+    res.status(200).json({ message: 'Login bem-sucedido' });
+  } else {
+    res.status(401).json({ message: 'Credenciais inválidas' });
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });

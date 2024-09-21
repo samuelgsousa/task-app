@@ -21,7 +21,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <header>
+        <img src="/Logomark.png" alt="logo" class="logo"/>
+        <h1>FocalPoint</h1>
+        </header>
+
         {children}
+        
       </body>
     </html>
   );
