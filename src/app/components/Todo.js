@@ -57,7 +57,7 @@ const Todo = () => {
     const updatedTask = { ...taskToUpdate, completed: !taskToUpdate.completed };
 
     await fetch(`${baseurl}/${id}`, {
-      method: 'PUT', // Certifique-se de ter uma rota PUT no backend para atualizar a tarefa
+      method: 'PUT', 
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedTask),
     });
@@ -101,52 +101,68 @@ const Todo = () => {
       )}
 
       <div className={`todo-container ${isPopupOpen || confirmDeletePopup ? 'blur' : ''}`}>
-        <ul className="taskList">
-          <h1>Suas tarefas de Hoje</h1>
-          {tasks.filter(task => !task.completed).length === 0 ? (
-            <p>Você não possui tarefas pendentes.</p>
-          ) : (
-            tasks.map(task => (
-              <li key={task._id}>
-                <div className="item">
-                  <input
-                    type="checkbox"
-                    checked={task.completed}
-                    onChange={() => toggleCompleted(task._id)}
-                  />
-                  <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
-                    {task.text}
-                  </span>
-                </div>
-                <button onClick={() => confirmDeleteTask(task._id)} className="excludeButton">
-                  <img src="/delete-icon.svg" alt="Excluir tarefa" className="trashIcon"/>
-                </button>
-              </li>
-            ))
-          )}
-                  {tasks.some(task => task.completed) && (
-          <>
-            <h1>Tarefas finalizadas</h1>
-              {tasks.filter(task => task.completed).map(task => (
-                <li key={task._id}>
-                  <div className="item">
-                    <input
-                      type="checkbox"
-                      checked={task.completed}
-                      onChange={() => toggleCompleted(task._id)}
-                    />
-                    <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
-                      {task.text}
-                    </span>
-                  </div>
-                  <button onClick={() => confirmDeleteTask(task._id)} className="excludeButton">
-                    <img src="/delete-icon.svg" alt="Excluir tarefa" className="trashIcon"/>
-                  </button>
-                </li>
-              ))}
-          </>
-        )}
-        </ul>
+
+      <ul className="taskList">
+  <h1>Suas tarefas de Hoje</h1>
+  {tasks.filter(task => !task.completed).length === 0 ? (
+    <p>Você não possui tarefas pendentes.</p>
+  ) : (
+    // Renderiza apenas tarefas não completadas
+    tasks
+      .filter(task => !task.completed) // Filtra tarefas pendentes
+      .map(task => (
+        <li key={task._id}>
+          <div className="item">
+            <label className="custom-checkbox">
+              <input
+                type="checkbox"
+                checked={task.completed}
+                onChange={() => toggleCompleted(task._id)}
+              />
+              <span className="checkmark"></span>
+              <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
+                {task.text}
+              </span>
+            </label>
+          </div>
+          <button onClick={() => confirmDeleteTask(task._id)} className="excludeButton">
+            <img src="/delete-icon.svg" alt="Excluir tarefa" className="trashIcon" />
+          </button>
+        </li>
+      ))
+  )}
+</ul>
+
+{tasks.some(task => task.completed) && (
+  <>
+    <h1>Tarefas finalizadas</h1>
+    <ul className="taskList">
+      {tasks
+        .filter(task => task.completed) // Filtra tarefas completadas
+        .map(task => (
+          <li key={task._id}>
+            <div className="item">
+              <label className="custom-checkbox">
+                <input
+                  type="checkbox"
+                  checked={task.completed}
+                  onChange={() => toggleCompleted(task._id)}
+                />
+                <span className="checkmark"></span>
+                <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
+                  {task.text}
+                </span>
+              </label>
+            </div>
+            <button onClick={() => confirmDeleteTask(task._id)} className="excludeButton">
+              <img src="/delete-icon.svg" alt="Excluir tarefa" className="trashIcon" />
+            </button>
+          </li>
+        ))}
+    </ul>
+  </>
+)}
+
 
 
 

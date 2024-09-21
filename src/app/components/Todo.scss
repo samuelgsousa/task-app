@@ -52,7 +52,7 @@ h1{
     border-radius: 10px;
     width: 85%;
     height: 8vh;
-    margin: 0; /* Remove a margem padrão da lista, se necessário */
+    margin: 0; 
     display: flex;
 
     padding-left: 20px;
@@ -82,7 +82,7 @@ h1{
 
 
 .taskList li:hover{
-    background-color: rgb(218, 238, 250);
+    background-color: #F7F9FD;
     border-color: transparent;
 }
 
@@ -164,7 +164,6 @@ button{
 
 .popup.active {
     top: 50%;
-    transition: top 10s ease, opacity 10s ease;
     opacity: 1; 
   }
 
@@ -216,4 +215,48 @@ button{
     border-style: solid !important;
   }
 
-  
+.custom-checkbox{
+  display: flex;
+  align-items: center;
+  }
+
+  /* Esconde o checkbox nativo */
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+  }
+
+
+.custom-checkbox .checkmark {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid $mainColor;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Estilo do checkbox quando marcado */
+.custom-checkbox input:checked + .checkmark {
+  background-color: #A0DCF6; /* Cor de fundo quando marcado */
+  border-color: #0796D3;
+}
+
+
+.custom-checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid #0796D3;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked + .checkmark:after {
+  display: block;
+}
