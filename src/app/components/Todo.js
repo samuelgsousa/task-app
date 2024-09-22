@@ -94,7 +94,7 @@ const Todo = () => {
             value={newTask} 
             onChange={(e) => setNewTask(e.target.value)} 
             placeholder="Digite" 
-            className="nTaskInput"
+            id="nTaskInput"
           />
           <div className="buttonsContainer">
             <button onClick={() => setIsPopupOpen(false)} className="cancelButton">Cancelar</button>

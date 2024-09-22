@@ -57,7 +57,7 @@ h1{
     padding: 0px 15px 0px 15px;
     gap: 16px;
     border-radius: 8px;
-    
+
     border-width: 1px;
 
     font-family: Inter Tight;
@@ -193,14 +193,6 @@ button{
 
 }
 
-
-  .nTaskInput{
-    @extend li;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    border-style: solid !important;
-  }
-
 .custom-checkbox{
   display: flex;
   align-items: center;
@@ -252,12 +244,6 @@ button{
 }
 
 
-
-.wellcomeMessage{
-  display: inherit;
-
-}
-
 .addTaskBtn{
    width: 60%;
 }
@@ -292,4 +278,43 @@ button{
     width: 80%;
  }
 
+}
+
+.wellcomeMessage{
+  display: inherit !important;
+
+}
+
+#nTaskInput{
+  cursor: pointer;
+  border-width: 1.7px;
+  border-color: #D7DDE9;
+  border-radius: 10px;
+  width: 85%;
+  height: 6vh;
+  margin: 0; 
+  display: flex;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
+
+  padding: 0px 15px 0px 15px;
+  gap: 16px;
+  border-radius: 8px;
+
+  border-width: 1px;
+
+  font-family: Inter Tight;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  letter-spacing: -0.02em;
+  text-align: left;
+
+  align-items: center;
+
+  box-sizing: border-box !important;
+  width: 100% !important;
+  border-style: solid !important;
 }
