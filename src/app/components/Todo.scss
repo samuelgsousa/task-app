@@ -280,10 +280,6 @@ button{
 
 }
 
-.wellcomeMessage{
-  display: inherit !important;
-
-}
 
 #nTaskInput{
   cursor: pointer;
@@ -317,4 +313,8 @@ button{
   box-sizing: border-box !important;
   width: 100% !important;
   border-style: solid !important;
+}
+
+.wellcomeMessage{
+  display: inherit;
 }

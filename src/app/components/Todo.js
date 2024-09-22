@@ -81,6 +81,15 @@ const Todo = () => {
     ));
   };
 
+  const wmsgRef = useRef(null);
+
+  useEffect(() => {
+    if (wmsgRef.current) {
+      wmsgRef.current.style.display = 'block';
+    }
+  }, []);
+
+
   return (
     <div className="allContent">
       
