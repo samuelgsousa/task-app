@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import './Todo.scss';
 import './Login.scss'
 
-const Login = () => {
+const Login = ({ setShowWelcomeMessage }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -20,6 +20,7 @@ const Login = () => {
     });
 
     if (res.status === 200) {
+      setShowWelcomeMessage(true);
       localStorage.setItem('authToken', 'loggedIn');
       router.push('/tasks'); // Redireciona para o componente de tarefas
     } else {
