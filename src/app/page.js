@@ -13,7 +13,7 @@ export default function Home() {
         <h1>Usuário: Marcus</h1>
         <h1>Senha: admin123</h1>
 
-        <p>Obs: afim de tornar a experiência mais completa e funcional, adicionei um sistema de autenticação e um banco de dados remoto. Assim os dados ficam armazenados e é possível acessar a mesma lista de tarefas em qualquer dispositivo</p>
+        <p>Obs: a fim de tornar a experiência mais completa e funcional, adicionei um sistema de autenticação e um banco de dados remoto. Assim os dados ficam armazenados e é possível acessar a mesma lista de tarefas em qualquer dispositivo</p>
       </div>
     </div>
     
