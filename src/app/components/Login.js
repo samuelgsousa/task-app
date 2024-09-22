@@ -21,7 +21,6 @@ const Login = () => {
 
     if (res.status === 200) {
       localStorage.setItem('authToken', 'loggedIn');
-      setShowWelcomeMessage(true);
       router.push('/tasks'); // Redireciona para o componente de tarefas
     } else {
       setError('Credenciais inválidas');

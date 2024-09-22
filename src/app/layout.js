@@ -2,7 +2,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { useState, useEffect } from "react";
-import React from 'react';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,7 +21,6 @@ const geistMono = localFont({
 
 export default function RootLayout({ children, isPopupOpen, confirmDeletePopup }) {
 
-  const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
   const blurClass = isPopupOpen || confirmDeletePopup ? 'blur' : '';
 
   const [date, setDate] = useState('');
@@ -43,10 +41,7 @@ export default function RootLayout({ children, isPopupOpen, confirmDeletePopup }
           <h1>FocalPoint</h1>
         </div>
 
-              {showWelcomeMessage && <h2 className="wellcomeMessage">Bem-vindo!</h2>}
-      {React.Children.map(children, (child) => 
-        React.cloneElement(child, { setShowWelcomeMessage })
-      )}
+        <h2 className="wellcomeMessage">Bem vindo de volta, Marcus</h2>
 
         <div>
           <span>{date}</span>
