@@ -20,6 +20,10 @@ const Login = () => {
     });
 
     if (res.status === 200) {
+      const wmsg = document.querySelector('h2.wellcomeMessage');
+      if (wmsg) {
+        wmsg.style.display = 'block';
+      }
       localStorage.setItem('authToken', 'loggedIn');
       router.push('/tasks'); // Redireciona para o componente de tarefas
     } else {

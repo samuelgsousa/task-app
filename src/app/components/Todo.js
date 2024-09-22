@@ -35,7 +35,21 @@ const Todo = () => {
     fetchTasks(); // Busca tarefas ao montar o componente
   }, []);
 
-  
+  const toggleHeaderFilter = () =>{
+    const header = document.querySelector('header')
+    header.classList.toggle('blur')
+  }  
+
+
+
+  useEffect(() => {
+    toggleHeaderFilter(); // Chama a função sempre que isPopupOpen muda
+  }, [isPopupOpen]);
+
+  useEffect(() => {
+    toggleHeaderFilter(); // Chama a função sempre que confirmDeletePopup muda
+  }, [confirmDeletePopup]);
+
 
   const addTask = async () => {
     if (newTask.trim()) {
