@@ -31,10 +31,6 @@ h1{
     align-items: center;
     gap: 1rem;
     list-style: none; 
-    width: Fixed (272px)px;
-    height: Hug (428px)px;
-    top: 162px;
-    left: 24px;
     padding: 32px 0px 32px 0px;
     gap: 24px;
     border-radius: 16px;
@@ -57,13 +53,12 @@ h1{
     padding-left: 20px;
     padding-right: 20px;
     justify-content: space-between;
-    width: Fill (208px)px;
 
-    width: Fill (208px)px;
     padding: 0px 15px 0px 15px;
     gap: 16px;
     border-radius: 8px;
-    border: 1px 0px 0px 0px;
+    
+    border-width: 1px;
 
     font-family: Inter Tight;
     font-size: 16px;
