@@ -9,7 +9,7 @@
     display: flex;
     gap: 8px;
     align-items: center;
-    flex: 1;
+    flex: 1 !important;
 }
 
 header{
@@ -21,7 +21,7 @@ header{
     top: 24px;
     left: 56px;
     padding: 0px 0px 24px 0px;
-    gap: 25%;
+    gap: 30%;
     border: 0px 0px 1px 0px;
     border-bottom-style: solid;
     border-width: 1px;
